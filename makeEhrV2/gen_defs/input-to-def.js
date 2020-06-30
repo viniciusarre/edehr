@@ -105,7 +105,7 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
-    let recHeader = this._hasValidRecHeader(entries)
+    let recHeader = this._needsUserSignature(entries)
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)
@@ -124,9 +124,9 @@ class RawInputToDef {
     })
     return postEntries
   }
-  _hasValidRecHeader (entries) {
-    let validated = entries.map(e => EhrShortForms.validateRecHeader(e))
-    return validated.includes(true)
+  _needsUserSignature (entries) {
+    let validated = entries.find(e => EhrShortForms.validateRecHeader(e) === true ) || {}
+    return Object.keys(validated).length > 0
   }
 
 

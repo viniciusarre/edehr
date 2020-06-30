@@ -103,7 +103,7 @@ class EhrDefsWorker {
     return medPeriods
   }
 
-  getRecHeaderStatus (pageKey) {
+  getCaseStudyDataStatus (pageKey) {
     const pd = this.getPageDefinition(pageKey)
     const recHeader = pd.recHeader
     return recHeader

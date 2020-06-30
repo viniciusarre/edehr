@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave")
+    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave", :errors="errors")
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
@@ -37,11 +37,11 @@
                   input(class="input text-input", type="text", v-model="profession")
               div(class="form-element")
                 div(class="input-element input-element-full")
-                  label Day
-                  input(class="input text-input", type="text", v-model="day")
+                  label Case study day
+                  input(class="input text-input", type="number", v-model="day", min="0")
               div(class="form-element")
                 div(class="input-element input-element-full")
-                  label Time
+                  label Case study time
                   input(class="input text-input", type="text", v-model="time")
               
 </template>
@@ -49,6 +49,8 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
+import { validTimeStr } from '../../helpers/ehr-utils'
+
 
 const TITLES = {
   edit: 'Edit assignment properties',
@@ -59,7 +61,8 @@ const ERRORS = {
   NAME_REQUIRED: 'Assignment name is required',
   ID_REQUIRED: 'Assignment externalId is required',
   ID_PATTERN: 'External Id needs to contain letters, numbers, hypens or underscores',
-  SEED_REQUIRED: 'Assignment EHR data seed is required'
+  SEED_REQUIRED: 'Assignment EHR data seed is required',
+  INVALID_TIME: 'Please, enter a valid 24hrs time'
 }
 
 const EDIT_ACTION= 'edit'
@@ -77,7 +80,7 @@ export default {
       showAdvanced: false,
       persona: '',
       profession: '',
-      day: '',
+      day: 0,
       time: ''
     }
   },
@@ -86,6 +89,12 @@ export default {
     nameValidate () {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
     },  
+    timeValidate () {
+      if (this.time.length > 0) {
+        return validTimeStr(this.time) ? null : ERRORS.INVALID_TIME
+      }
+      return null
+    },
     seedValidate () {
       return this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
     },
@@ -100,8 +109,12 @@ export default {
       let id = this.externalId.toLowerCase()
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
+    errors () {
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
+      return errmsg ? [errmsg] : []
+    },
     disableSave () {
-      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
       const isInvalid = !!errmsg
       console.log('errmsg', errmsg)
       return isInvalid

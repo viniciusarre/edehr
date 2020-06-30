@@ -58,8 +58,8 @@ export default {
     isEditing () {
       return this.ehrHelp.isEditing()
     },
-    personaData () {
-      return StoreHelper.getAssignmentPersonaData()
+    assignmentCaseStudyData () {
+      return StoreHelper.getAssignmentCaseStudyData()
     },
     disabled () {
       let disable = false
@@ -132,10 +132,6 @@ export default {
         let initialValue = inputs[this.elementKey]
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
-        // if (this.element.recHeader) {
-        //   const v = this.personaData[this.key]
-        //   this.setInitialValue(v)
-        // }
       }
     },
     setupCommon () {

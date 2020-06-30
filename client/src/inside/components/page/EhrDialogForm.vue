@@ -12,8 +12,8 @@
       div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
-      div(slot="left-content", class="checkbox-wrapper", v-if="hasRecHeader")
-        input(class="checkbox", type="checkbox", v-model="ackReqHeader")
+      div(slot="footer-content", class="checkbox-wrapper", v-if="hasCaseStudyData")
+        input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
         span {{ ackText }}
       span(slot="save-button") Create and close
 </template>
@@ -36,7 +36,7 @@ export default {
   data: function () {
     return {
       errorList: [],
-      ackReqHeader: false // has the user acknowledged the reqHeader?, that is, confirmed the checkbox
+      ackCaseStudyData: false // has the user acknowledged the reqHeader?, that is, confirmed the checkbox
     }
   },
   props: {
@@ -50,18 +50,22 @@ export default {
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
-    hasRecHeader () {
-      return EhrDefs.getRecHeaderStatus(this.ehrHelp.pageKey)
+    hasCaseStudyData () {
+      return (EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && this.hasPersonaData)
     },
     disableSave () {
-      // disable save in case there is a recHeader and the user hasn't acknowledged / confirmed
+      // disable save in case there is any case study data and the user hasn't acknowledged / confirmed
       // it yet
-      return this.hasRecHeader ? !this.ackReqHeader : false
+      return this.hasCaseStudyData ? !this.ackCaseStudyData : false
     },
     ackText () {
       const persona = this.getPersonaData()
       return `I hereby certify correct ${persona.persona}, ${persona.profession}. 
       Hospital date: ${persona.day} ${persona.time}`
+    },
+    hasPersonaData () {
+      const persona = this.getPersonaData()
+      return Object.keys(persona).length > 0
     }
 
   },
@@ -92,7 +96,7 @@ export default {
       }
     },
     getPersonaData () {
-      return StoreHelper.getAssignmentPersonaData()
+      return StoreHelper.getAssignmentCaseStudyData()
     }
   },
   mounted: function () {

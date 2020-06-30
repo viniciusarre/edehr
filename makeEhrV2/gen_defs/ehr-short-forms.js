@@ -1,36 +1,6 @@
 import EhrTypes from '../../client/src/helpers/ehr-types'
 
 const Defs = {
-  // 'inputType': 'record_header'
-  // recordHeader: [
-  //   {
-  //     elementKey: 'persona',
-  //     inputType: 'text',
-  //     label: 'Persona',
-  //     tableLabel: 'Identification',
-  //     recHeader: true
-  //   },
-  //   {
-  //     elementKey: 'profession',
-  //     inputType: 'text',
-  //     label: 'Profession',
-  //     recHeader: true
-  //   },
-  //   {
-  //     elementKey: 'day',
-  //     inputType: 'day',
-  //     label: 'Day',
-  //     recHeader: true
-  //   },
-  //   {
-  //     elementKey: 'time',
-  //     inputType: 'time',
-  //     label: 'Time',
-  //     validation: 'time24',
-  //     recHeader: true
-  //   }
-  // ],
-
   checkBoxTextSpacer: [
     { inputType: 'checkbox' },
     { inputType: 'text', formOption: 'hideLabel' },
