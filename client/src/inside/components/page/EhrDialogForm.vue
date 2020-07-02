@@ -5,14 +5,14 @@
       @cancel="cancelDialog", 
       @save="saveDialog", 
       v-bind:errors="errorList", 
-      :hasLeftContent="true"
+      :hasFooterContent="true"
       :disableSave="disableSave"
     )
       h3(slot="header") {{ tableDef.addButtonText }}
       div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
-      div(slot="footer-content", class="checkbox-wrapper", v-if="hasCaseStudyData")
+      div(slot="footer-content", class="checkbox-wrapper", v-if="acknowledgeSignature")
         input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
         span {{ ackText }}
       span(slot="save-button") Create and close
@@ -48,11 +48,25 @@ export default {
       return this.tableDef.tableKey
     },
     groups () {
-      return this.tableDef.form ? this.tableDef.form.ehr_groups : []
+      let groups = this.tableDef.form ? this.tableDef.form.ehr_groups : []
+      if (this.acknowledgeSignature) {
+        return groups.filter(g => g.formCss !== 'record-header')
+      }
+      return groups
     },
+    acknowledgeSignature () {
+      return (
+        this.isSigning &&
+        EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
+        this.hasPersonaData
+      )
+    }, 
+
     hasCaseStudyData () {
-      return (EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && this.hasPersonaData)
+      return EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
+        this.hasPersonaData
     },
+
     disableSave () {
       // disable save in case there is any case study data and the user hasn't acknowledged / confirmed
       // it yet
@@ -66,6 +80,9 @@ export default {
     hasPersonaData () {
       const persona = this.getPersonaData()
       return Object.keys(persona).length > 0
+    },
+    isSigning () {
+      return StoreHelper.isSigning()
     }
 
   },

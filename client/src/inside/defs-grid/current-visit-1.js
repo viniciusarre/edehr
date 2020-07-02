@@ -255,6 +255,44 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'vitals.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'vitals.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'vitals.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'vitals.time'
+        },
+        {
           elementKey: 'day',
           formIndex: '1',
           inputType: 'text',
@@ -513,6 +551,16 @@ export default function () {
           addButtonText: 'Add vital signs',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Vital taken day',
               ehr_list_index: '2',
               items: [
@@ -632,7 +680,12 @@ export default function () {
                 elementKey: 'ehr_group32',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group33',
@@ -661,6 +714,8 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
               day: '',
               time: '',
               systolic: '',
@@ -688,6 +743,44 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
+        {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'fluidBalance.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'fluidBalance.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'fluidBalance.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'fluidBalance.time'
+        },
         {
           elementKey: 'fluidIn',
           formIndex: '1',
@@ -717,6 +810,16 @@ export default function () {
           addButtonText: 'Add a fluid in/out record',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Fluid in',
               ehr_list_index: '2',
               items: [
@@ -740,7 +843,12 @@ export default function () {
                 elementKey: 'ehr_group38',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group39',
@@ -752,6 +860,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
+              day: '',
+              time: '',
               fluidIn: '',
               fluidOut: ''
             }
@@ -766,6 +878,44 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
+        {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'neurological.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'neurological.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'neurological.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'neurological.time'
+        },
         {
           elementKey: 'alert',
           formIndex: '1',
@@ -1591,6 +1741,16 @@ export default function () {
           addButtonText: 'Add a neurological assessment',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Status',
               tableCss: 'hr-table',
               ehr_list_index: '2',
@@ -1811,7 +1971,12 @@ export default function () {
                 elementKey: 'ehr_group40',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group41',
@@ -1897,6 +2062,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
+              day: '',
+              time: '',
               alert: '',
               eyeOpening: '',
               verbalResponse: '',
@@ -1938,6 +2107,44 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
+        {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'respiratory.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'respiratory.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'respiratory.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'respiratory.time'
+        },
         {
           elementKey: 'airway',
           dataCaseStudy: true,
@@ -2330,6 +2537,16 @@ export default function () {
           addButtonText: 'Add a respiratory assessment',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Airway',
               ehr_list_index: '2',
               items: [
@@ -2441,7 +2658,12 @@ export default function () {
                 elementKey: 'ehr_group50',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group51',
@@ -2491,6 +2713,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
+              day: '',
+              time: '',
               airway: '',
               oxygenTherapy: '',
               flowRate: '',
@@ -2517,6 +2743,44 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
+        {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'cardiovascular.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'cardiovascular.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'cardiovascular.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'cardiovascular.time'
+        },
         {
           elementKey: 'pulse',
           dataCaseStudy: 'Regular',
@@ -3079,6 +3343,16 @@ export default function () {
           addButtonText: 'Add a cardiovascular assessment',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Pulse',
               ehr_list_index: '2',
               items: [
@@ -3239,7 +3513,12 @@ export default function () {
                 elementKey: 'ehr_group55',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group56',
@@ -3291,6 +3570,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
+              day: '',
+              time: '',
               pulse: '',
               skinAppearance: '',
               capRefillLeftHand: '',
@@ -3322,6 +3605,44 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
+        {
+          elementKey: 'persona',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'gastrointestinal.persona'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'gastrointestinal.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'gastrointestinal.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'gastrointestinal.time'
+        },
         {
           elementKey: 'bowel',
           formIndex: '1',
@@ -3767,6 +4088,16 @@ export default function () {
           addButtonText: 'Add a gastrointestinal assessment',
           ehr_list: [
             {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'persona',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
               label: 'Bowel',
               ehr_list_index: '2',
               items: [
@@ -3913,7 +4244,12 @@ export default function () {
                 elementKey: 'ehr_group60',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: []
+                gChildren: [
+                  'persona',
+                  'profession',
+                  'day',
+                  'time'
+                ]
               },
               {
                 elementKey: 'ehr_group61',
@@ -3980,6 +4316,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              persona: '',
+              profession: '',
+              day: '',
+              time: '',
               bowel: '',
               bSounds: '',
               condition: '',

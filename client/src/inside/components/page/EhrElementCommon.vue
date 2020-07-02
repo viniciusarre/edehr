@@ -76,6 +76,10 @@ export default {
         this.setInitialValue('')
       }
 
+      if (this.element.recHeader) {
+        disable = true
+      }
+
       return disable
     }
   },
@@ -132,6 +136,10 @@ export default {
         let initialValue = inputs[this.elementKey]
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
+        if (this.element.recHeader) {
+          const v = this.assignmentCaseStudyData[this.key]
+          this.setInitialValue(v)
+        }
       }
     },
     setupCommon () {
